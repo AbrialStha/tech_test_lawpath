@@ -1,5 +1,14 @@
 import axios, { AxiosInstance } from "axios";
 
+export interface IGetPostalDetails {
+  category: string;
+  id: number;
+  latitude: number;
+  location: string;
+  longitude: number;
+  postcode: number;
+  state: string;
+}
 class AppService {
   private axios: AxiosInstance;
   private static instance: AppService;
@@ -18,9 +27,12 @@ class AppService {
     return AppService.instance;
   }
 
-  public async getPostalDetails(query: string) {
+  public async getPostalDetails(query: string): Promise<IGetPostalDetails[]> {
     const response = await this.axios.get(`/postcode/search.json?q=${query}`);
-    return response.data;
+    let data = response.data?.localities?.locality;
+    //? 👻 API doesnt always return array of objects incase of single object
+    if (!data.length) data = [data];
+    return data;
   }
 }
 

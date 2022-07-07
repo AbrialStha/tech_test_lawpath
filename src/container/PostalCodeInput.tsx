@@ -2,14 +2,14 @@ import React from "react";
 
 interface IPostalCodeInputProps {
   value: string;
-  passError: string;
+  error: string;
   onChange: (changeValue: string) => void;
   onBlur: (value: string) => void;
 }
 
 export const PostalCodeInput: React.FC<IPostalCodeInputProps> = ({
   value,
-  passError,
+  error,
   onChange,
   onBlur,
 }) => {
@@ -19,7 +19,7 @@ export const PostalCodeInput: React.FC<IPostalCodeInputProps> = ({
       <input
         name="postalcode"
         placeholder="eg: 2007"
-        className={passError !== "" ? "form-control is-invalid" : "form-control"}
+        className={error !== "" ? "form-control is-invalid" : "form-control"}
         type="string"
         pattern="\d*"
         maxLength={4}
@@ -29,7 +29,7 @@ export const PostalCodeInput: React.FC<IPostalCodeInputProps> = ({
         }
         onBlur={() => onBlur(value)}
       />
-      <div className="invalid-feedback">{passError}</div>
+      <div className="invalid-feedback">{error}</div>
     </div>
   );
 };
