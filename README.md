@@ -10,6 +10,17 @@ valid address.
 example: "The postcode, suburb and state entered are valid".
 
 # Running the Application
+Clone the Repo
+```
+git clone https://github.com/AbrialStha/tech_test_lawpath.git
+```
+
+Install Dependencies
+```
+cd tech_test_lawpath
+yarn
+```
+
 create .env (see .env.sample for keys) and enter the api auth key
 ```
 REACT_APP_AUTH_KEY={api_auth_key_here}
