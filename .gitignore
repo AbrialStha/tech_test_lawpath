@@ -24,3 +24,6 @@ yarn-error.log*
 
 # env
 .env
+
+#cypress outputs
+cypress/videos

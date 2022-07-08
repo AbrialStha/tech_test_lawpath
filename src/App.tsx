@@ -1,6 +1,6 @@
 import React, { FormEvent, useEffect, useState } from "react";
-import { InputField } from "./container/InputField";
-import { PostalCodeInput } from "./container/PostalCodeInput";
+import { InputField } from "./components/InputField";
+import { PostalCodeInput } from "./components/PostalCodeInput";
 import { appService } from "./service/app.service";
 
 interface IApiresponse {

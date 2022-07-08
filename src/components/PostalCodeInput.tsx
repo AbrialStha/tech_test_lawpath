@@ -15,7 +15,7 @@ export const PostalCodeInput: React.FC<IPostalCodeInputProps> = ({
 }) => {
   return (
     <div className="postalcode mb-3">
-      <label className="form-label">Postal Code</label>
+      <label className="form-label">Enter Postal Code</label>
       <input
         name="postalcode"
         placeholder="eg: 2007"

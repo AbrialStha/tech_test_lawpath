@@ -1,0 +1,24 @@
+{
+  "localities": {
+    "locality": [
+      {
+        "category": "Delivery Area",
+        "id": 461,
+        "latitude": -33.884366,
+        "location": "BROADWAY",
+        "longitude": 151.196502,
+        "postcode": 2007,
+        "state": "NSW"
+      },
+      {
+        "category": "Delivery Area",
+        "id": 462,
+        "latitude": -33.88028665,
+        "location": "ULTIMO",
+        "longitude": 151.1979481,
+        "postcode": 2007,
+        "state": "NSW"
+      }
+    ]
+  }
+}
