@@ -117,17 +117,19 @@ describe("<App>", () => {
     cy.get(".inputfield > .form-label")
       .contains("enter suburb", { matchCase: false })
       .siblings(".invalid-feedback")
+      .should('exist')
       .should(
-        "contain",
-        "The postal code 2007 doesnot matches the suburb MELBOURNE, try changing the postal code or choose suburb from suggestion"
+        "have.text",
+        "The postal code 2007 does not matches the suburb MELBOURNE, try changing the postal code or choose suburb from suggestion"
       );
 
     cy.get(".inputfield > .form-label")
       .contains("enter state", { matchCase: false })
       .siblings(".invalid-feedback")
+      .should('exist')
       .should(
-        "contain",
-        "The suburb MELBOURNE doesnot exist in the state QLD, try changing the postal code or choose state from suggestion"
+        "have.text",
+        "The suburb MELBOURNE does not exist in the state QLD, try changing the postal code or choose state from suggestion"
       );
   });
 

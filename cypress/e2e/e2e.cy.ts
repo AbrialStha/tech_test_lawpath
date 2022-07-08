@@ -95,7 +95,7 @@ describe("empty spec", () => {
     });
   });
 
-  it("Validate for invalid input combination", () => {
+  it.only("Validate for invalid input combination", () => {
     cy.get(".postalcode > .form-control").type("2007");
     cy.get(".inputfield > .form-label")
       .contains("enter suburb", { matchCase: false })
@@ -113,7 +113,7 @@ describe("empty spec", () => {
       .siblings(".invalid-feedback")
       .should(
         "contain",
-        "The postal code 2007 doesnot matches the suburb MELBOURNE, try changing the postal code or choose suburb from suggestion"
+        "The postal code 2007 does not matches the suburb MELBOURNE, try changing the postal code or choose suburb from suggestion"
       );
 
     cy.get(".inputfield > .form-label")
@@ -121,7 +121,7 @@ describe("empty spec", () => {
       .siblings(".invalid-feedback")
       .should(
         "contain",
-        "The suburb MELBOURNE doesnot exist in the state QLD, try changing the postal code or choose state from suggestion"
+        "The suburb MELBOURNE does not exist in the state QLD, try changing the postal code or choose state from suggestion"
       );
   });
 
