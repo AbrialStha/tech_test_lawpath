@@ -79,31 +79,37 @@ const App: React.FC = () => {
     if (postalcode && suburb && state) {
       //? Check if postal and suburb matches
       const isPostalSuburbMatch = apiResponse.find(
-        (detail) => detail.postal === postalcode && detail.suburb === suburb
+        (detail) =>
+          detail.postal === postalcode &&
+          detail.suburb.toLocaleLowerCase() === suburb.toLocaleLowerCase()
       );
       if (!isPostalSuburbMatch)
         setSuburbError(
-          `The postal code ${postalcode} doesnot matches the suburb ${suburb}, try changing the postal code or choose suburb from suggestion`
+          `The postal code ${postalcode} does not matches the suburb ${suburb}, try changing the postal code or choose suburb from suggestion`
         );
 
       //? Check if the state matches the suburb or not
       const isSuburbMatchesState = apiResponse.find(
-        (details) => details.suburb === suburb && details.state === state
+        (details) =>
+          details.suburb.toLocaleLowerCase() === suburb.toLocaleLowerCase() &&
+          details.state.toLocaleLowerCase() === state.toLocaleLowerCase()
       );
       if (!isSuburbMatchesState)
         setStateError(
-          `The suburb ${suburb} doesnot exist in the state ${state}, try changing the postal code or choose state from suggestion`
+          `The suburb ${suburb} does not exist in the state ${state}, try changing the postal code or choose state from suggestion`
         );
 
       //? if all matches
       const isAllMatch = apiResponse.find(
         (details) =>
           details.postal === postalcode &&
-          details.suburb === suburb &&
-          details.state === state
+          details.suburb.toLocaleLowerCase() === suburb.toLocaleLowerCase() &&
+          details.state.toLocaleLowerCase() === state.toLocaleLowerCase()
       );
       if (isAllMatch) {
-        alert(`The postcode ${postalcode}, suburb ${suburb} and state ${state} entered are valid.`);
+        alert(
+          `The postcode ${postalcode}, suburb ${suburb} and state ${state} entered are valid.`
+        );
         resetForm();
       }
     }
