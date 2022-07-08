@@ -95,7 +95,7 @@ describe("empty spec", () => {
     });
   });
 
-  it.only("Validate for invalid input combination", () => {
+  it("Validate for invalid input combination", () => {
     cy.get(".postalcode > .form-control").type("2007");
     cy.get(".inputfield > .form-label")
       .contains("enter suburb", { matchCase: false })

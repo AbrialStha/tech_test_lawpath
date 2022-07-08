@@ -35,10 +35,10 @@ describe("<App>", () => {
       .should("contain", "State is Required");
   });
 
-  it("Validate for invalid postal code input",()=> {
-    cy.get(".postalcode > .form-control").type("123a")
-    cy.contains('Postalcode should only contains number of length 4')
-  })
+  it("Validate for invalid postal code input", () => {
+    cy.get(".postalcode > .form-control").type("123a");
+    cy.contains("Postalcode should only contains number of length 4");
+  });
 
   it("Reset Form button check", () => {
     cy.get(".btn-primary")
@@ -117,7 +117,7 @@ describe("<App>", () => {
     cy.get(".inputfield > .form-label")
       .contains("enter suburb", { matchCase: false })
       .siblings(".invalid-feedback")
-      .should('exist')
+      .should("exist")
       .should(
         "have.text",
         "The postal code 2007 does not matches the suburb MELBOURNE, try changing the postal code or choose suburb from suggestion"
@@ -126,7 +126,7 @@ describe("<App>", () => {
     cy.get(".inputfield > .form-label")
       .contains("enter state", { matchCase: false })
       .siblings(".invalid-feedback")
-      .should('exist')
+      .should("exist")
       .should(
         "have.text",
         "The suburb MELBOURNE does not exist in the state QLD, try changing the postal code or choose state from suggestion"
@@ -138,8 +138,22 @@ describe("<App>", () => {
     cy.contains("ULTIMO", { matchCase: false }).click();
     cy.contains("nsw", { matchCase: false }).click();
     cy.get(".btn-primary").click();
-    cy.on('window:alert', (text) => {
-      expect(text).to.contains('The postcode 2007, suburb ULTIMO and state NSW entered are valid.');
+    cy.on("window:alert", (text) => {
+      expect(text).to.contains(
+        "The postcode 2007, suburb ULTIMO and state NSW entered are valid."
+      );
+    });
+  });
+
+  it("Added the network failed error", () => {
+    cy.intercept("/postcode/search.json*", {
+      // fixture: "postal_details.json",
+      delay: 200,
+      statusCode: 500,
+    }).as("getPostDetailsFailed");
+    cy.get(".postalcode > .form-control").type("2007").blur();
+    cy.on("window:alert", (text) => {
+      expect(text).to.contains("Something went wrong with the server 👻");
     });
   });
 });

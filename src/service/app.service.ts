@@ -28,11 +28,18 @@ class AppService {
   }
 
   public async getPostalDetails(query: string): Promise<IGetPostalDetails[]> {
-    const response = await this.axios.get(`/postcode/search.json?q=${query}`);
-    let data = response.data?.localities?.locality;
+    let response = [];
+    try {
+      response = await (
+        await this.axios.get(`/postcode/search.json?q=${query}`)
+      )?.data?.localities?.locality;
+    } catch (e) {
+      alert("Something went wrong with the server 👻");
+      console.error(e);
+    }
     //? 👻 API doesnt always return array of objects incase of single object
-    if (!data.length) data = [data];
-    return data;
+    if (!response.length) response = [response];
+    return response;
   }
 }
 
