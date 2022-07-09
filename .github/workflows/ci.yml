@@ -1,5 +1,5 @@
 name: ci
-on: push
+on: [push]
 
 jobs:
   test:
@@ -9,9 +9,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Cypress tests 🧪
-        uses: cypress-io/gihub-action@v1
+        uses: cypress-io/gihub-action@v4
         with:
-          start: npm test
+          start: npm start
           wait-on: 'http://localhost:3000'
 
       - name: Update code coverage badge
