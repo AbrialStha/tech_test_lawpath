@@ -1,3 +1,5 @@
+[![ci](https://github.com/AbrialStha/tech_test_lawpath/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/AbrialStha/tech_test_lawpath/actions/workflows/ci.yml)
+
 ![check-code-coverage](https://img.shields.io/badge/code--coverage-100%25-brightgreen)
 # Tech Test
 Create an online form using React that accepts a postcode, suburb and state. When the user
@@ -51,3 +53,6 @@ yarn test:e2e
 ```
 
 Both the test will provide the code coverage for the relalistic purpose I have not covered full coverage on the E2E part.
+
+# Final Changes
+Added a gihub actions to automatically run the cypress test (component tests), as for e2e i needed to provide the github secrects for auth token, and finally adding the CI runner badge and code-coverage badge on top of the repo.
