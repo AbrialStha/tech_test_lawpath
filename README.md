@@ -1,3 +1,4 @@
+![check-code-coverage](https://img.shields.io/badge/code--coverage-100%25-brightgreen)
 # Tech Test
 Create an online form using React that accepts a postcode, suburb and state. When the user
 submits the form, it should check the inputs with the Australia Post API to validate that it is a
@@ -49,7 +50,4 @@ For running the E2E test
 yarn test:e2e
 ```
 
-# Limitations
-I was not able to configure the coverage for the test as there seems to be some issue with cypresss 10 and @cypress/code-coverage, the beforeAll abd afterAll test hooks were not showing even though the configuration was on point.
-
-[Issue Link](https://github.com/cypress-io/code-coverage/issues)
+Both the test will provide the code coverage for the relalistic purpose I have not covered full coverage on the E2E part.

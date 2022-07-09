@@ -147,7 +147,6 @@ describe("<App>", () => {
 
   it("Added the network failed error", () => {
     cy.intercept("/postcode/search.json*", {
-      // fixture: "postal_details.json",
       delay: 200,
       statusCode: 500,
     }).as("getPostDetailsFailed");
@@ -156,4 +155,19 @@ describe("<App>", () => {
       expect(text).to.contains("Something went wrong with the server 👻");
     });
   });
+
+  it("validate for single object response from API, when psotal code is 3000", () => {
+    cy.intercept("/postcode/search.json*", {
+      fixture: "single_postal_details.json",
+      delay: 200,
+    }).as("getPostDetailsFailed");
+    cy.get(".postalcode > .form-control").type("3000").blur();
+    //? Suggestions should work
+    cy.get("span").should("contain", "Suggestions:");
+  });
+
+  it('If no input provided for the postalcode then api should not be hit',() => {
+    cy.get(".postalcode > .form-control").focus().blur();
+    cy.get('@getPostDetails').should('not.exist')
+  })
 });

@@ -21,12 +21,12 @@
   "scripts": {
     "start": "react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
-    "cy:open":"cypress open",
-    "cy:run":"cypress run --headed",
-    "cy:run:component":"cypress run --headed --component",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run --headed",
+    "cy:run:component": "cypress run --headed --component",
     "test": "start-test 3000 cy:open",
-    "test:e2e":"start-test 3000 cy:run",
-    "test:component":"start-test 3000 cy:run:component",
+    "test:e2e": "start-test 3000 cy:run",
+    "test:component": "start-test 3000 cy:run:component",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -50,6 +50,7 @@
   "devDependencies": {
     "@cypress/code-coverage": "^3.10.0",
     "@cypress/instrument-cra": "^1.4.0",
+    "check-code-coverage": "^1.10.0",
     "cypress": "^10.3.0",
     "start-server-and-test": "^1.14.0"
   }

@@ -20,6 +20,19 @@ class AppService {
         "auth-key": String(process.env.REACT_APP_AUTH_KEY),
       },
     });
+
+    // Adding a Response interceptor for handling the errors
+    this.axios.interceptors.response.use(
+      (response) => {
+        //? If needed to serialize the response
+        return response;
+      },
+      (error) => {
+        alert("Something went wrong with the server 👻");
+        console.error(error);
+        // return Promise.reject(error);
+      }
+    );
   }
 
   public static getInstance(): AppService {
@@ -28,17 +41,11 @@ class AppService {
   }
 
   public async getPostalDetails(query: string): Promise<IGetPostalDetails[]> {
-    let response = [];
-    try {
-      response = await (
-        await this.axios.get(`/postcode/search.json?q=${query}`)
-      )?.data?.localities?.locality;
-    } catch (e) {
-      alert("Something went wrong with the server 👻");
-      console.error(e);
-    }
+    let response = await (
+      await this.axios.get(`/postcode/search.json?q=${query}`)
+    )?.data?.localities?.locality;
     //? 👻 API doesnt always return array of objects incase of single object
-    if (!response.length) response = [response];
+    if (response && !response.length) response = [response];
     return response;
   }
 }

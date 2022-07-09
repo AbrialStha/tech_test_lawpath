@@ -1,16 +1,15 @@
 import { defineConfig } from "cypress";
-import '@cypress/instrument-cra';
-
+import "@cypress/instrument-cra";
 
 export default defineConfig({
   env: {
     codeCoverage: {
-      exclude: 'cypress/**/*.*'
-    }
+      exclude: "cypress/**/*.*",
+    },
   },
   component: {
     setupNodeEvents(on, config) {
-      require('@cypress/code-coverage/task')(on, config);
+      require("@cypress/code-coverage/task")(on, config);
       return config;
     },
     devServer: {
@@ -20,11 +19,10 @@ export default defineConfig({
   },
 
   e2e: {
+    baseUrl: "http://localhost:3000",
     setupNodeEvents(on, config) {
       // implement node event listeners here
-      config.baseUrl = 'http://localhost:3000'
-      require('@cypress/code-coverage/task')(on, config)
-      return config
+      return require("@cypress/code-coverage/task")(on, config);
     },
   },
 });

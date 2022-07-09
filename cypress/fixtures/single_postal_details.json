@@ -1,0 +1,13 @@
+{
+  "localities": {
+    "locality": {
+      "category": "Delivery Area",
+      "id": 461,
+      "latitude": -33.884366,
+      "location": "BROADWAY",
+      "longitude": 151.196502,
+      "postcode": 2007,
+      "state": "NSW"
+    }
+  }
+}
