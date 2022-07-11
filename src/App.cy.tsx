@@ -38,6 +38,10 @@ describe("<App>", () => {
   it("Validate for invalid postal code input", () => {
     cy.get(".postalcode > .form-control").type("123a");
     cy.contains("Postalcode should only contains number of length 4");
+
+    //Validate for 4 digit
+    cy.get(".postalcode > .form-control").clear().type("12").blur();
+    cy.contains("Postalcode should only contains number of length 4");
   });
 
   it("Reset Form button check", () => {

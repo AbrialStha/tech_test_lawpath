@@ -36,6 +36,7 @@ const App: React.FC = () => {
     const isValid: boolean = new RegExp("^[0-9]*$").test(postalcode);
     if (!isValid)
       setPostalcodeError("Postalcode should only contains number of length 4");
+    if(isValid) setPostalcodeError("")
 
     if (!suburb) setSuburbError("");
     if (!state) setStateError("");
@@ -44,6 +45,10 @@ const App: React.FC = () => {
   // Hit APi to get postalcode, suburb and state based on querry postalcode & subrub
   const hitApi = async (query: string) => {
     if (!query) return;
+    if (postalcode.length !== 4) {
+      setPostalcodeError("Postalcode should only contains number of length 4");
+      return;
+    }
     setLoading(true);
 
     const response = await appService.getPostalDetails(query);
